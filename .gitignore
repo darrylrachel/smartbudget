@@ -1,0 +1,36 @@
+# Dependencies and build artifacts
+node_modules/
+.expo/
+dist/
+web-build/
+coverage/
+*.tsbuildinfo
+
+# Local configuration and secrets; retain safe template
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.mobileprovision
+*.keystore
+google-services.json
+GoogleService-Info.plist
+
+# Logs and local tooling
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Exported/private data
+private-data/
+local-exports/
+supabase/.temp/
+
+# Native generated directories (revisit if adopting maintained native projects)
+/ios/
+/android/
