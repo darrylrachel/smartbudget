@@ -1,3 +1,12 @@
+## SmartBudget 2.0 web development
+
+From `web/`, run `npm ci`, then `npm run dev`. The web app is independent of the preserved root Expo package and needs no environment variables or backend.
+
+Checks: `npm run typecheck`, `npm run lint`, `npm test`, `npm run build`; install the test browser once with `npx playwright install chromium`, then run `npm run test:browser`. `npm run preview` serves the production build on http://127.0.0.1:4173. PWA service workers are registered only in production builds; development mode does not install one. Stop local servers when finished. For hosting later, HTTPS and SPA deep-link fallback are required; publishing is not part of this foundation.
+
+All data is synthetic, all financial writes/invites/export/deletion remain unavailable, and lesson completion resets on reload. The preserved Expo instructions below apply only to the older prototype.
+> **SmartBudget 2.0 direction (October 27, 2026):** The canonical product is now a web-first responsive SaaS/PWA. Use [the 2.0 specifications](docs/smartbudget-2.0/README.md), [web architecture decision](docs/ADR_WEB_FIRST.md), and [web foundation plan](docs/WEB_FOUNDATION_PLAN.md). Native-first instructions below describe the preserved Expo prototype and do not authorize rebuilding it. The web package lives in `web/`. The first 2.0 foundation task is implemented; see [verification](docs/WEB_FOUNDATION_VERIFICATION.md). Later engine/backend phases require a new request.
+
 # SmartBudget
 
 A calmer way to decide what your next paycheck needs to cover.

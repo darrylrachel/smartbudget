@@ -1,3 +1,5 @@
+> **SmartBudget 2.0 direction (October 27, 2026):** The canonical product is now a web-first responsive SaaS/PWA. Use [the 2.0 specifications](docs/smartbudget-2.0/README.md), [web architecture decision](docs/ADR_WEB_FIRST.md), and [web foundation plan](docs/WEB_FOUNDATION_PLAN.md). Native-first instructions below describe the preserved Expo prototype and do not authorize rebuilding it. The web package lives in `web/`. The first 2.0 foundation task is implemented; see [verification](docs/WEB_FOUNDATION_VERIFICATION.md). Later engine/backend phases require a new request.
+
 # UI/UX design system
 
 ## Direction
@@ -67,3 +69,7 @@ Every screen needs loading, empty, populated, recoverable error, and permission-
 ## Design acceptance
 
 Verify small phone and large font layouts, screen-reader traversal, reduced motion, keyboard focus in web preview, safe-area insets, touch areas, contrast, and workspace identity on all mutations. Phase 1 must show representative empty/error/sample states and all five tabs without pretending unavailable features work.
+
+## User-requested appearance update (October 27, 2026)
+
+The responsive web header now uses a named profile disclosure containing Switch workspace and an accessible light/dark appearance switch. Light is the default; the theme preference persists independently of financial data. Until authentication exists, Alex Morgan is labelled as a sample profile. Both palettes use shared semantic color tokens; menu dismissal and focus restoration work with pointer and keyboard input.

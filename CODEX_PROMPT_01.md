@@ -1,3 +1,5 @@
+> **SmartBudget 2.0 direction (October 27, 2026):** The canonical product is now a web-first responsive SaaS/PWA. Use [the 2.0 specifications](docs/smartbudget-2.0/README.md), [web architecture decision](docs/ADR_WEB_FIRST.md), and [web foundation plan](docs/WEB_FOUNDATION_PLAN.md). Native-first instructions below describe the preserved Expo prototype and do not authorize rebuilding it. The web package lives in `web/`. The first 2.0 foundation task is implemented; see [verification](docs/WEB_FOUNDATION_VERIFICATION.md). Later engine/backend phases require a new request.
+
 # Codex prompt 01 — Plan, then implement the foundation only
 
 You are working in the SmartBudget repository. Read AGENTS.md and all supplied product/specification Markdown files before editing. The documentation is the implementation baseline. If actual repository instructions conflict, identify and resolve the conflict within the authorized foundation scope; ask only if a material product decision cannot be inferred.
