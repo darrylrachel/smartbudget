@@ -2,7 +2,7 @@
 
 This is the single authoritative delivery sequence. Requirements live in the [PRD](docs/smartbudget-2.0/02-PRD.md); implementation evidence lives in [project status](docs/PROJECT_STATUS.md) and [verification](VERIFICATION.md). No phase listing authorizes implementation or sets a completion date.
 
-The synthetic web foundation is implemented. Phase 0 documentation and CI are the current scope; Phases 1–6 remain planned. Financial primitives and sample previews do not constitute a financial engine.
+The synthetic web foundation and Phase 1 pure financial engine/recurrence increment are implemented locally. See [Phase 1 evidence and adapter limits](docs/PHASE_1_VERIFICATION.md). Phases 2–6 remain planned. Sample UI previews remain hand-authored; backend acceptance and persistence are unavailable. Remote CI success requires separate evidence.
 
 | Phase | Delivery focus | Dependencies | Objective exit criteria |
 | --- | --- | --- | --- |

@@ -40,3 +40,7 @@ Verified 2026-10-21 by the package builder.
 - SHA256SUMS.txt covers the 13 starter files and this report; it intentionally does not hash itself.
 
 These checks verify artifact integrity and package structure, not application behavior. No app, allocator, database, device build, or production security system has been implemented or tested. Curriculum is a specification rather than finished reviewed lesson manuscripts. See README for source limitations and selected defaults.
+
+## Phase 1 financial engine
+
+See [Phase 1 verification](docs/PHASE_1_VERIFICATION.md) for the Phase 1 specification review, local typecheck/lint/domain/build/Playwright results, and the remaining adapter/backend boundaries. Phase 0 is merged in PR #1; its Web CI run 40568044540 passed all steps.

@@ -4,7 +4,7 @@ Web-first personal finance SaaS and installable responsive PWA built with React,
 
 ## Current implementation
 
-The web foundation provides responsive navigation, profile/theme controls, synthetic personal and household workspaces, exact-money primitives, sample plan and transaction views, a 15-entry Academy catalog with a sample reader, and a public-shell service worker. All financial data is synthetic. Financial writes, authentication, secure household services, export and deletion are unavailable. Learning progress resets on reload. There is no implemented allocator, persistent backend or production security guarantee.
+The web foundation provides responsive navigation, profile/theme controls, synthetic personal and household workspaces, exact-money primitives, sample plan and transaction views, a 15-entry Academy catalog with a sample reader, and a public-shell service worker. All financial data is synthetic. Financial writes, authentication, secure household services, export and deletion are unavailable. Learning progress resets on reload. The pure financial allocator and paycheck recurrence adapter are implemented and tested independently of the sample UI. There is no persistent backend or production security guarantee. See [Phase 1 verification](docs/PHASE_1_VERIFICATION.md).
 
 ## Development
 

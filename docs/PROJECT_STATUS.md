@@ -1,6 +1,6 @@
 # SmartBudget 2.0 project status
 
-Reconciled October 27, 2026 against `fada3e7c4daed98a59dcf78cf83ec1c4b8efb214`. Local main HEAD equals this historical audit reference; there are no subsequent local commits. `git ls-remote origin refs/heads/main` also confirmed that SHA during this task. GitHub metadata reported repository visibility as public; owner review of proprietary-code exposure remains outstanding.
+Historical reconciliation baseline: `fada3e7c4daed98a59dcf78cf83ec1c4b8efb214`. For Phase 1 review on October 27, 2026, origin/main was fetched at `eced00b36beb664c15fa30a61db80206915025b7`, which includes merged Phase 0 [PR #1](https://github.com/darrylrachel/smartbudget/pull/1). Its [Web CI run](https://github.com/darrylrachel/smartbudget/actions/runs/40568044540) passed all checks including Playwright. The Phase 1 feature branch starts at that merged baseline; no Phase 0 changes are added to its diff. Repository visibility remains public; owner review of proprietary-code access is outstanding.
 
 The source checkout at `C:/Users/rache/Code/smartbudget` has modified root specifications and untracked Expo implementation/toolchain files. They are preserved untouched. This change uses an isolated feature-branch worktree from the committed web baseline; it does not incorporate or overwrite those local edits. Review/reconcile that separate work before combining branches. This is deliberate isolation of conflicting documentation edits, not a claim that the source checkout was clean.
 
@@ -8,9 +8,11 @@ The source checkout at `C:/Users/rache/Code/smartbudget` has modified root speci
 
 `web/`: Vite/React/TypeScript/React Router sample foundation, existing CSS tokens and light/dark themes, responsive navigation and profile controls, synthetic workspace isolation, exact-money/date primitives, sample plan/entry/goal/report views, 15-entry Academy catalog and sample lesson, public-shell manifest/service worker, domain and Chromium tests. Sample lesson progress is in memory. Disabled actions disclose unavailable persistence. Fixture isolation does not establish production authorization.
 
+Phase 1 domain increment: pure deterministic allocator, shared preview/edit validation, SHA-256 canonical snapshot identity, locks/caps, exact weighted rounding and calendar paycheck recurrence. See [verification](PHASE_1_VERIFICATION.md). The displayed sample previews remain hand-authored; engine integration into budgeting screens is deferred to Phase 3.
+
 ## Planned requirements
 
-Allocator, recurrence, backend, email/password auth with verification/reset and persistent secure sessions, PostgreSQL migrations, server-enforced role boundaries, idempotent atomic writes, persistent budgeting, household invitations/revocation, 15 reviewed lessons/private progress, export/deletion and operational policies. See the canonical PRD and root roadmap. The beta is completely free; billing and premium entitlements are excluded.
+Backend, email/password auth with verification/reset and persistent secure sessions, PostgreSQL migrations, server-enforced role boundaries, idempotent atomic writes, persistent budgeting, household invitations/revocation, 15 reviewed lessons/private progress, export/deletion and operational policies. See the canonical PRD and root roadmap. The beta is completely free; billing and premium entitlements are excluded.
 
 ## Outstanding decisions
 
