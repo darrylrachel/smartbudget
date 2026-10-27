@@ -1,3 +1,5 @@
+> **Superseded historical specification/prompt:** Preserve the detail below as provenance. Current authority: [approved PRD](docs/smartbudget-2.0/02-PRD.md), [roadmap](ROADMAP.md) and [project status](docs/PROJECT_STATUS.md). Native-first setup, old phase numbers, unfinished-app claims and open-license/provider choices below are not current instructions. The web foundation is implemented; this task authorizes Phase 0 alignment and CI only.
+
 > **SmartBudget 2.0 direction (October 27, 2026):** The canonical product is now a web-first responsive SaaS/PWA. Use [the 2.0 specifications](docs/smartbudget-2.0/README.md), [web architecture decision](docs/ADR_WEB_FIRST.md), and [web foundation plan](docs/WEB_FOUNDATION_PLAN.md). Native-first instructions below describe the preserved Expo prototype and do not authorize rebuilding it. The web package lives in `web/`. The first 2.0 foundation task is implemented; see [verification](docs/WEB_FOUNDATION_VERIFICATION.md). Later engine/backend phases require a new request.
 
 # Codex prompt 01 — Plan, then implement the foundation only

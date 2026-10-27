@@ -1,3 +1,5 @@
+> **Historical migration proposal; delivery sequence superseded:** The [root roadmap](../../ROADMAP.md) is the only authoritative phase sequence. Preserve the reuse and recovery guidance below; old repository observations and stage numbers are dated evidence, not current status.
+
 # Grounded migration plan
 
 This is primarily a specification-to-product build plus selective reuse of an uncommitted prototype. There is no verified production database or deployed user data to migrate. Do not invent a production cutover or run destructive data conversion. If implementation discovers real data, stop that migration path, inventory it and design an explicit backup/mapping/reconciliation plan.

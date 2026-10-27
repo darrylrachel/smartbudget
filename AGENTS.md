@@ -2,7 +2,7 @@
 
 ## Scope and source of truth
 
-Read README, PRD, ALGORITHM_SPEC, UI_UX_DESIGN_SYSTEM, ACADEMY_SPEC, ARCHITECTURE, DATABASE_SCHEMA, and ROADMAP before substantial changes. User instructions take precedence. Document a plan before implementation. CODEX_PROMPT_01 authorizes only foundation; later roadmap entries are not standing authorization.
+Read README, docs/smartbudget-2.0/02-PRD.md (canonical approved PRD), ALGORITHM_SPEC, UI_UX_DESIGN_SYSTEM, ACADEMY_SPEC, ARCHITECTURE, DATABASE_SCHEMA, and ROADMAP before substantial changes. Use docs/PROJECT_STATUS.md to distinguish implemented and planned work. User instructions take precedence. Document a plan before implementation. CODEX_PROMPT_01 is superseded historical foundation guidance; the current user task defines authorization. Later roadmap entries are not standing authorization. Preserve web/ Vite/React, CSS tokens, dark mode and Expo history. The beta is completely free and the product proprietary; do not add billing, premium gates or an open-source license.
 
 ## Working rules
 

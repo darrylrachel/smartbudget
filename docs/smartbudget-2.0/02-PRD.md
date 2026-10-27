@@ -1,6 +1,6 @@
 # SmartBudget 2.0 PRD
 
-Status: proposed implementation baseline, October 27, 2026. User-confirmed direction: responsive web-first SaaS and installable PWA; paycheck-first hybrid budgeting; shared household; financial education; light design. Audit findings are in document 01. Defaults below are proposals unless marked otherwise.
+Status: canonical approved product requirements, reconciled October 27, 2026. Requirements are acceptance obligations, not implementation claims. See [current status](../PROJECT_STATUS.md), [canonical roadmap](../../ROADMAP.md) and historical audit document 01. Detailed choices explicitly labeled proposed remain subject to technical review.
 
 ## Purpose and users
 
@@ -15,6 +15,22 @@ The primary budgeting unit is the pay period. Calendar-month summaries are a rep
 **Usable SaaS MVP:** authentication; manual cash/checking/savings accounts; posted income/expense/refund/adjustment and same-workspace bookkeeping transfers; scheduled income forecasts; obligations and occurrences; category envelopes; preview/edit/accept plans; goals; household roles/invites; monthly reporting; reviewed education and private progress; export/deletion; responsive PWA.
 
 **Deferred:** bank synchronization, bank payments, investment/tax optimization, generative allocation decisions, multicurrency, native app-store clients, offline financial writes, full credit-card ledger, subscription billing and automated notifications. Debt minimums may be planned as cash obligations; credit capacity is never cash. “SaaS” means hosted authenticated service, not an implied billing feature. Credit-card spending must remain unavailable until payment-reserve accounting is implemented and tested.
+
+## Approved product decisions
+
+- United States only; USD only; manual transaction entry for MVP; bank synchronization deferred.
+- Existing Vite + React + TypeScript and React Router foundation; responsive desktop/mobile browsers and installable PWA. Preserve CSS design tokens, light-first forest-green UI and optional dark mode.
+- Paycheck-first hybrid budgeting: essentials and needs first, configurable weights on eligible remainder; preview, edit and accept. Posted cash is authoritative; forecasts and reservations never create available money. Monthly reports summarize the same ledger.
+- One active shared household per user initially, separate from the private personal ledger; Owner, Editor and Viewer roles enforced by the server. Secure invitations, expiration, acceptance and revocation are required.
+- Email/password registration, email verification, password reset, secure persistent sessions, logout and session revocation are MVP requirements. Refresh must preserve a valid authorized session through a reviewed design; memory-only tokens that require a new sign-in on every refresh are insufficient.
+- 15 free, reviewed Academy lessons with private persistent progress; education never modifies balances.
+- Authorized data export, confirmed account deletion and documented retention/backup policies are release requirements. No sensitive financial data in public PWA caches.
+- Vercel + Supabase are proposed providers, not final production commitments. Backend/session execution architecture requires technical review before implementation.
+- SmartBudget is proprietary commercial software; no open-source license is approved. Review repository visibility and proprietary-code handling; absence of a LICENSE does not make public code private.
+
+## Completely free beta
+
+The initial SmartBudget 2.0 beta is completely free. No payment or credit card is required. No subscription checkout, premium feature gates or upgrade prompts are permitted. All completed beta MVP functionality is accessible to approved testers, including the 15 free Academy lessons. Premium pricing, tiers and entitlements will be designed separately after core budgeting validation; no billing or entitlements implementation is authorized here.
 
 ## Workspace and privacy contract
 
@@ -52,7 +68,7 @@ Worked acceptance example: posted cash $1,000 already includes this paycheck; ex
 
 ## Product quality and success
 
-Light interface, keyboard/screen-reader usable, WCAG 2.2 AA target, 200% zoom and 320px reflow without losing controls. Proposed supported launch browsers: current stable Chrome/Edge/Safari/Firefox; installation behavior verified where browser/platform supports it. Installation is optional; browser access remains complete.
+Light-first interface with existing optional dark mode retained, keyboard/screen-reader usable, WCAG 2.2 AA target, 200% zoom and 320px reflow without losing controls. Proposed supported launch browsers: current stable Chrome/Edge/Safari/Firefox; installation behavior verified where browser/platform supports it. Installation is optional; browser access remains complete.
 
 Proposed performance budgets: public shell LCP≤2.5s on a documented mobile profile, preview calculation≤100ms for a 500-demand fixture on the agreed test device. Measure, record and adjust against actual pilot usage rather than claiming compliance from builds.
 
@@ -60,4 +76,4 @@ Measure consented, minimized onboarding completion, first accepted plan, next-pa
 
 ## Decisions to validate before their phase
 
-Launch geography/currency; household limit; owner/editor/viewer policy; identity/email provider; hosting/region; retention and deletion timeline including backups; subscription strategy; licensing; support ownership and content reviewer. These do not block a synthetic foundation. They do block relevant production configuration and commitments. No release date or cost estimate is asserted without team capacity and vendor choices.
+Backend execution and secure persistent-session design; identity/email provider; production hosting/region; retention and deletion timeline including backups; support ownership and content reviewer. Geography, currency, household limit, roles, proprietary licensing and the completely free beta are approved above. Future premium pricing/tiers/entitlements are a separate post-validation task. These do not block a synthetic foundation. They do block relevant production configuration and commitments. No release date or cost estimate is asserted without team capacity and vendor choices.

@@ -1,3 +1,5 @@
+> **Historical evidence:** Original dated observations and scope below are retained. For current requirements and phase numbering see the [canonical PRD](02-PRD.md), [roadmap](../../ROADMAP.md) and [status](../PROJECT_STATUS.md). This document does not authorize further implementation.
+
 # Audit and deliverable verification
 
 October 27, 2026. This continuation reviewed and updated the existing Markdown specification package. No application source, repository specifications, Git commits, remote files, deployments or hosted resources were changed.

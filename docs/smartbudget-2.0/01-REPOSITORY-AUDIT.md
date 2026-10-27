@@ -1,3 +1,5 @@
+> **Historical evidence:** Original dated observations and scope below are retained. For current requirements and phase numbering see the [canonical PRD](02-PRD.md), [roadmap](../../ROADMAP.md) and [status](../PROJECT_STATUS.md). This document does not authorize further implementation.
+
 # Repository audit
 
 Audit date: October 27, 2026. Repository: https://github.com/darrylrachel/smartbudget.

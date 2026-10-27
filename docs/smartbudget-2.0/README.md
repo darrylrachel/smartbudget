@@ -1,3 +1,5 @@
+> **Current index:** The [PRD](02-PRD.md) is the canonical approved requirements baseline; the [root roadmap](../../ROADMAP.md) is the single delivery sequence and [project status](../PROJECT_STATUS.md) distinguishes implementation from plans. Historical provenance paragraphs below describe the original package, not the current approval status. The beta is completely free; proprietary licensing is approved.
+
 # SmartBudget 2.0 specification package
 
 Prepared October 27, 2026. Product direction: web-first SaaS, installable responsive PWA, paycheck-first hybrid budgeting, separate private and household ledgers, practical education, light design.

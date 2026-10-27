@@ -1,12 +1,14 @@
+> **Architecture status:** Detailed financial, authorization and public-only PWA contracts below remain supporting requirements. The [approved PRD](02-PRD.md) governs product decisions and the [roadmap](../../ROADMAP.md) governs phases. Preserve the existing Vite/React app. Vercel/Supabase are proposals; backend execution and session architecture require an ADR before implementation. The SQL allocator execution choice below is a proposal, not a final decision. Secure persistent sessions are required; the memory-only refresh/sign-in proposal below is superseded. No financial/token persistence in public PWA caches is permitted.
+
 # Technical architecture
 
-Status: proposed, not deployed. Preserve domain rules from the audited algorithm/schema. Replace the native-first presentation baseline with a web-first one.
+Status: Vite/React web foundation implemented; backend and execution architecture proposed, not deployed. Preserve domain rules from the audited algorithm/schema.
 
 ## Architecture decision
 
 Use React + TypeScript with Vite, a browser router and semantic HTML/CSS for the client; proposed Supabase Auth/Postgres for identity and durable data; database transactions/functions for financial commands; static HTTPS hosting with SPA fallback for the client. Select compatible versions at implementation time and record exact versions and lockfile. These are design choices, not claims about the latest library releases or existing installed services.
 
-Why: remote has no app to migrate, while local React Native components are an uncommitted prototype. A browser client gives direct control of desktop layout, forms, keyboard interaction, manifest and service-worker behavior. Preserve pure TypeScript helpers and product contracts; port visual components instead of carrying a native presentation dependency into the web product. Native clients can later share the domain package, not dictate this release.
+Historical rationale: the original audit found no remote app, while local React Native components were an uncommitted prototype. The web foundation now exists and must be preserved. A browser client gives direct control of desktop layout, forms, keyboard interaction, manifest and service-worker behavior. Preserve pure TypeScript helpers and product contracts; port visual components instead of carrying a native presentation dependency into the web product. Native clients can later share the domain package, not dictate this release.
 
 Do not adopt a second competing web framework. If the implementation checkout has changed materially, inspect it, record an ADR and reuse a sound web implementation. Keep the local Expo prototype intact until salvage is verified.
 
@@ -40,7 +42,7 @@ supabase/migrations/       later phase only
 docs/                      ADRs, plan, verification and release evidence
 ```
 
-During migration root Expo scripts remain intact. The final canonical app location is decided after the prototype is preserved; the first task uses web/ to avoid overwriting untracked work.
+During migration root Expo scripts remain intact. The canonical app location is web/; preserve root prototype work.
 
 ## Domain and persistence contracts
 
@@ -64,15 +66,15 @@ Financial command envelope: authenticated actor from session, workspace ID, idem
 
 Other writes use the same serialization/version discipline, including expenses, opening-balance corrections, refunds, goal targets and reserve releases. Acceptance cannot independently race a cash expense. Editing history uses reversal/void and replacement with audit rather than silent destructive updates.
 
-Execution boundary: TypeScript runs the interactive client preview. The authoritative allocator for acceptance runs inside the locked Postgres transaction as a versioned SQL/PLpgSQL implementation of the same rules. SQL must use exact intermediate arithmetic and the same canonical ordering, caps and rounding. Both implementations consume shared language-neutral fixtures and must produce equivalent normalized results before acceptance is enabled. Do not assume Postgres executes the TypeScript module, or compute outside the lock and then trust client totals. The diagram's Domain box describes the shared rule contract, not one runtime binary. If maintaining two implementations proves excessive, record an ADR for a server runtime that can run the shared TypeScript within a database transaction before building acceptance.
+Proposed execution boundary (requires technical review): TypeScript runs the interactive client preview. One option is an authoritative allocator inside the locked Postgres transaction as a versioned SQL/PLpgSQL implementation of the same rules. SQL must use exact intermediate arithmetic and the same canonical ordering, caps and rounding. Both implementations consume shared language-neutral fixtures and must produce equivalent normalized results before acceptance is enabled. Do not assume Postgres executes the TypeScript module, or compute outside the lock and then trust client totals. The diagram's Domain box describes the shared rule contract, not one runtime binary. If maintaining two implementations proves excessive, record an ADR for a server runtime that can run the shared TypeScript within a database transaction before building acceptance.
 
 ## Identity and household enforcement
 
-RLS denies nonmembers and personal-workspace peers on all base tables. Owner/editor write; viewer read; owner alone manages membership. Privileged functions have fixed search paths and explicit authorization. Protect both old and new workspace IDs on updates. Enforce one personal owner and proposed one active household per user in constraints/transactions. Never allow client role escalation.
+RLS denies nonmembers and personal-workspace peers on all base tables. Owner/editor write; viewer read; owner alone manages membership. Privileged functions have fixed search paths and explicit authorization. Protect both old and new workspace IDs on updates. Enforce one personal owner and one active household per user in constraints/transactions. Never allow client role escalation.
 
 Store invitation token hashes, expiration, recipient binding and used/revoked state. Acceptance validates authenticated recipient and membership limits atomically. Owner transfer changes workspace owner and membership together. Export uses the same scope. Test nested joins, direct IDs, RPCs, realtime subscriptions, revoked access and service-role bypass boundaries. Fixture isolation tests are not substitutes.
 
-Proposed web session: provider-managed authentication with short-lived tokens held in memory and no persisted financial query cache. Refresh loses the session until sign-in unless a separately reviewed secure session design is added. If durable sign-in is required, design a same-origin session/BFF with HttpOnly Secure SameSite cookies and CSRF protections before production; do not silently add token localStorage persistence. A strict CSP, safe text rendering and minimized third-party scripts reduce browser exposure.
+Secure persistent sessions are required, alongside email/password registration, email verification, password reset, logout and session revocation. The earlier memory-only session proposal (requiring sign-in after refresh) is superseded. Review the provider/runtime and session execution boundary before implementation; a same-origin session/BFF with HttpOnly Secure SameSite cookies and CSRF protection is one option, not a selected architecture. Do not silently add token localStorage persistence or a persisted financial query cache. A strict CSP, safe text rendering and minimized third-party scripts reduce browser exposure.
 
 ## PWA and offline contract
 
@@ -84,7 +86,7 @@ Offline: public shell/help may load; finances show “Connect to load your budge
 
 ## Operations and quality
 
-Foundation uses no hosted resources or credentials. Backend phase adds versioned migrations, local database tests, RLS tests and a CI pipeline. Production needs selected hosting/region, TLS, dependency review, content review, privacy/retention policy, scoped export/deletion, backup restore rehearsal and named support/incident owner. Proposed availability objective and alert thresholds must be set against budget before launch.
+Foundation uses no hosted resources or credentials. Phase 0 configures web CI; the backend phase adds versioned migrations, local database tests and RLS/concurrency CI coverage. Production needs selected hosting/region, TLS, dependency review, content review, privacy/retention policy, scoped export/deletion, backup restore rehearsal and named support/incident owner. Proposed availability objective and alert thresholds must be set against budget before launch.
 
 CI gates: clean install, typecheck, lint, domain invariants, browser journeys and build; later migration/RLS/concurrency suites. Test rounding/caps, pay boundaries, leap dates, duplicate IDs, refunds/transfers, negative cash, stale accepts and simultaneous writers. Browser tests cover desktop/mobile sizes, keyboard, deep links, workspace reset and PWA cache exclusions. Automated accessibility checks plus manual screen reader/zoom checks. No raw amounts, request bodies, tokens or transaction descriptions in analytics/logs.
 

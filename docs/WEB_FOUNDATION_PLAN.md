@@ -1,3 +1,5 @@
+> **Historical evidence:** Original dated observations and scope below are retained. For current requirements and phase numbering see the [canonical PRD](smartbudget-2.0/02-PRD.md), [roadmap](../ROADMAP.md) and [status](PROJECT_STATUS.md). This document does not authorize further implementation.
+
 # Web foundation implementation plan
 
 October 27, 2026. Scope: execute only the SmartBudget 2.0 foundation prompt.
