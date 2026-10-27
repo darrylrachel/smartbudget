@@ -1,28 +1,17 @@
-> **SmartBudget 2.0 direction (October 27, 2026):** The canonical product is now a web-first responsive SaaS/PWA. Use [the 2.0 specifications](docs/smartbudget-2.0/README.md), [web architecture decision](docs/ADR_WEB_FIRST.md), and [web foundation plan](docs/WEB_FOUNDATION_PLAN.md). Native-first instructions below describe the preserved Expo prototype and do not authorize rebuilding it. The web package lives in `web/`. The first 2.0 foundation task is implemented; see [verification](docs/WEB_FOUNDATION_VERIFICATION.md). Later engine/backend phases require a new request.
+# Canonical SmartBudget 2.0 roadmap
 
-# Roadmap and gates
+This is the single authoritative delivery sequence. Requirements live in the [PRD](docs/smartbudget-2.0/02-PRD.md); implementation evidence lives in [project status](docs/PROJECT_STATUS.md) and [verification](VERIFICATION.md). No phase listing authorizes implementation or sets a completion date.
 
-No phase is authorized merely by being listed here. The first Codex prompt authorizes Phase 1 only after writing a plan.
+The synthetic web foundation is implemented. Phase 0 documentation and CI are the current scope; Phases 1–6 remain planned. Financial primitives and sample previews do not constitute a financial engine.
 
-| Phase | Deliverables | Exit evidence |
-| --- | --- | --- |
-| 0 — Product baseline | This documentation package and recorded assumptions | Cross-document consistency and archive verification |
-| 1 — Foundation | Expo/TypeScript scaffold; five tabs and representative root-stack placeholders; theme; accessible components; typed domain contracts; mock repository; synthetic fixtures; Academy catalog and one sample reader | Typecheck/lint pass; focused money test; navigation smoke check; mock labeling; no network/backend dependency |
-| 2 — Budget domain | Validated accounts/transactions, obligations, envelopes, deterministic allocator, manual review and reconciliation | All algorithm fixtures/properties; no double counting; correct boundary and credit semantics before enabling credit support |
-| 3 — Identity and household | Approved backend setup, auth, schema/migrations, RLS, invites, roles, scoped repositories, atomic writes | Full role matrix and direct-ID denial tests; revocation; concurrency/idempotency; no private data leakage |
-| 4 — End-to-end budgeting | Actual payday workflow, activity, goals, forecasts, monthly summaries, exports/deletion | Primary journeys on devices; accurate cash/reserve reporting; recoverable errors |
-| 5 — Academy and polish | 15 reviewed lesson manuscripts; progress persistence; accessible lesson experience | Source and arithmetic review; progress privacy/versioning; no financial side effects |
-| 6 — Release readiness | Device/accessibility testing; privacy/retention decisions; backups; support path; store assets and release review | Documented release checklist and explicit authorization to publish |
+| Phase | Delivery focus | Dependencies | Objective exit criteria |
+| --- | --- | --- | --- |
+| 0 — Repository Alignment & CI | Documentation reconciliation, canonical project status, approved requirements, automated web CI | Inspect audited HEAD and preserve local work | Consistent PRD/status/roadmap; actual web scripts configured; local results recorded; successful GitHub workflow required before claiming remote CI passed |
+| 1 — Financial Engine | Deterministic allocator; paycheck recurrence; locks/caps; weighted remainder; exact rounding | Phase 0 baseline; existing exact-money contracts | Boundary/leap-date, locks/caps, stable rounding and conservation/invariant tests pass; preview and edits share validation; no forecast/double-paycheck funding |
+| 2 — Backend & Authentication | Final execution/session decision; auth and persistent sessions; PostgreSQL schema/migrations; workspace authorization; idempotent commands; atomic transactions; household boundaries | Phase 1 contracts and architecture ADR before acceptance implementation | Registration/verification/reset/logout/revocation tested; role/direct-ID negative tests; private-ledger isolation; stale/concurrent/retried command tests and atomic rollback; authoritative results match engine fixtures |
+| 3 — Personal Budgeting MVP | Onboarding; accounts/posted income; bills/expenses; plan preview/edit/accept; goals/reservations; refunds/transfers; monthly reports | Phases 1–2 and server-enforced authorization | Persistent end-to-end journeys survive reload; ledger/report reconciliation, errors, stale input and uncertain-save retries verified; no fake persistence |
+| 4 — Shared Households | Secure invitations; Owner/Editor/Viewer workflows; shared finances; membership revocation | Backend boundaries designed in Phase 2; personal journeys in Phase 3 | Multi-user tests deny cross-workspace/private access, viewer writes and revoked membership; expiration/replay and last-owner handling tested |
+| 5 — SmartBudget Academy | 15 free reviewed lessons; publication/versioning; private progress; accessible reader | Content preparation may run in parallel; identity/progress security from Phase 2 | All 15 manuscripts reviewed with sources and arithmetic; progress persists privately; version updates and accessible journeys verified; completion cannot mutate finances |
+| 6 — Beta Readiness | Production hosting/PWA verification; export/deletion; retention/backups; monitoring/recovery; accessibility/browser matrix; controlled completely free beta | Phases 1–5; approved providers and operational policies | Scoped export/confirmed deletion tested; restore rehearsal, monitoring/recovery ownership, manual accessibility and browser/install evidence recorded; public-only caches verified; approved testers access completed MVP without payment, card, checkout, gates or upgrade prompts; explicit release approval |
 
-## Foundation stop line
-
-Do not implement real authentication, backend connections/migrations, bank sync, payments, financial persistence, the full allocator, household permission services, production analytics, push notifications, deployment, or finished financial advice content in Phase 1. Demo buttons must disclose unavailable behavior. Do not create empty “working” success flows that imply financial actions occurred.
-
-## Risks and responses
-
-- Cash/reservation drift → one domain contract, atomic writes, reconciliation and invariant tests.
-- Household privacy leak → separate workspaces, composite references, database authorization tests.
-- Scope expansion → explicit phase boundaries and acceptance criteria.
-- Beginner overload → progressive disclosure, short lessons, supportive error copy.
-- False precision → clear forecasts/shortfalls, no guaranteed outcomes, reviewed examples.
-- Dependency churn → choose compatible stable versions during implementation and commit lockfile.
+Security is foundational: household authorization is designed into the backend from the beginning. Phase 4 expands workflows rather than introducing the first access controls. Maintain and test PWA privacy, accessibility and responsive behavior throughout. Academy content preparation may run alongside engineering. Credit-card spending stays deferred until its accounting model is validated. Bank synchronization, billing and premium entitlements are outside these phases. Pricing design follows core budgeting validation separately.

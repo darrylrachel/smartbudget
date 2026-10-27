@@ -1,3 +1,5 @@
+> **Historical evidence:** Original dated observations and scope below are retained. For current requirements and phase numbering see the [canonical PRD](02-PRD.md), [roadmap](../../ROADMAP.md) and [status](../PROJECT_STATUS.md). This document does not authorize further implementation.
+
 # First actionable Codex implementation prompt
 
 Implement only the SmartBudget 2.0 web foundation described below. Read applicable AGENTS.md, this 2.0 package and existing README/PRD/algorithm/architecture/schema/design/Academy/roadmap before editing. The user's web-first responsive SaaS/PWA direction supersedes the old native-first starter architecture for this task. Preserve paycheck-first hybrid budgeting, separate personal/household ledgers, education and light design.

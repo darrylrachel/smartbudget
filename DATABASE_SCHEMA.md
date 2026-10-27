@@ -1,3 +1,5 @@
+> **Supporting specification, not implemented functionality:** Apply with the [canonical PRD](docs/smartbudget-2.0/02-PRD.md) and [roadmap](ROADMAP.md). Preserve detailed financial/security/content contracts. Old phase numbers refer to the historical sequence. MVP is US/USD only, one active household, free beta and 15 free reviewed lessons. Credit-card spending remains deferred; schema credit types do not enable it.
+
 # Proposed database schema
 
 Logical Postgres design for later implementation, not executable migrations. All financial tables carry workspace_id; IDs are UUIDs; created_at/updated_at are UTC timestamps. Money columns are BIGINT cents with domain validation and safe client serialization. Currency is USD in MVP. Date-only fields use DATE and workspace time zone rules.

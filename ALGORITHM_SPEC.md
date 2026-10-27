@@ -1,3 +1,5 @@
+> **Supporting specification, not implemented functionality:** Apply with the [canonical PRD](docs/smartbudget-2.0/02-PRD.md) and [roadmap](ROADMAP.md). Preserve detailed financial/security/content contracts. Old phase numbers refer to the historical sequence. MVP is US/USD only, one active household, free beta and 15 free reviewed lessons. Credit-card spending remains deferred; schema credit types do not enable it.
+
 # Deterministic allocation specification
 
 Version 1. Recommendations assign settled cash to envelopes; they never execute payments. No generative model participates in arithmetic or ranking.

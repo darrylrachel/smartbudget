@@ -1,6 +1,8 @@
+> Current requirements: [canonical PRD](../docs/smartbudget-2.0/02-PRD.md), [roadmap](../ROADMAP.md), [status](../docs/PROJECT_STATUS.md). Initial beta is completely free; this package currently implements synthetic sample functionality only.
+
 # SmartBudget 2.0 web foundation
 
-Responsive light-mode sample PWA built with React, TypeScript, Vite and React Router. This package is independent of the preserved Expo prototype in the repository root.
+Responsive light-first sample PWA with optional dark mode built with React, TypeScript, Vite and React Router. This package is independent of the preserved Expo prototype in the repository root.
 
 ## Run locally
 

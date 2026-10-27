@@ -1,3 +1,5 @@
+> **Current alignment:** Preserve the existing web CSS design system, responsive navigation, forest-green actions and optional dark mode. The [approved PRD](02-PRD.md) governs; sample foundation screens do not establish implemented financial workflows. The beta has no premium gates or upgrade prompts.
+
 # UI/UX specification
 
 Proposed responsive web experience. Preserve calm light surfaces, forest green actions and plain supportive language. The current prototype's centered 720px column is a reference for mobile content, not the desktop layout contract.

@@ -1,9 +1,9 @@
 # Contributing
 
-This repository begins as documentation. Read README and AGENTS before proposing code. Agree on the roadmap phase and keep a change within that phase. Record material product/architecture changes with rationale and update related contracts together.
+Read [README](README.md), [AGENTS](AGENTS.md), the [approved PRD](docs/smartbudget-2.0/02-PRD.md) and [roadmap](ROADMAP.md). Work on a dedicated branch, preserve local changes and stay within the authorized phase. The canonical app is `web/`; historical Expo work is preserved.
 
-Use synthetic data only. Never include account numbers, statements, credentials, invitation tokens, or private household information in issues or pull requests. If a secret is exposed, revoke/rotate it through its provider; deleting a file alone is insufficient.
+Use the exact setup/check commands in README. CI runs typecheck, lint, domain tests, production build and Chromium tests after `npm ci`. Do not weaken tests to pass CI. Financial changes require conservation/rounding evidence; authorization changes require negative access tests. Compilation cannot establish security or release readiness.
 
-Pull requests should explain the user-visible problem and resulting behavior, reference affected specs, describe validation performed and limitations, and include screenshots for meaningful interface changes. Financial changes must show conservation/rounding evidence; access-control changes must show denied-access tests.
+Use synthetic data only. Never put account numbers, statements, secrets, invitation tokens or private financial records in issues, logs, artifacts or pull requests. Revoke/rotate exposed secrets through their provider.
 
-Do not claim tests pass without running them. Use the commands documented by the actual app once foundation is implemented. No commands are supplied here because the application does not exist yet. Select a license before accepting code intended for public redistribution.
+PRs should describe the problem/result, affected contracts, actual verification and limitations. Include screenshots for interface changes. No merge or deployment without owner authorization. SmartBudget is proprietary commercial software; no open-source license is approved. Review visibility/access with the owner; a missing LICENSE does not make a public repository private.

@@ -1,3 +1,5 @@
+> **Historical evidence:** Original dated observations and scope below are retained. For current requirements and phase numbering see the [canonical PRD](smartbudget-2.0/02-PRD.md), [roadmap](../ROADMAP.md) and [status](PROJECT_STATUS.md). This document does not authorize further implementation.
+
 # SmartBudget 2.0 web foundation verification
 
 October 27, 2026. Foundation implemented in `web/`, alongside the preserved Expo prototype. No push, commit, PR, deployment, hosted resources or real financial records were created.

@@ -1,53 +1,46 @@
-## SmartBudget 2.0 web development
+# SmartBudget 2.0
 
-From `web/`, run `npm ci`, then `npm run dev`. The web app is independent of the preserved root Expo package and needs no environment variables or backend.
+Web-first personal finance SaaS and installable responsive PWA built with React, TypeScript, Vite and React Router in `web/`. The existing CSS tokens, forest-green actions, light-first interface and optional dark mode are retained.
 
-Checks: `npm run typecheck`, `npm run lint`, `npm test`, `npm run build`; install the test browser once with `npx playwright install chromium`, then run `npm run test:browser`. `npm run preview` serves the production build on http://127.0.0.1:4173. PWA service workers are registered only in production builds; development mode does not install one. Stop local servers when finished. For hosting later, HTTPS and SPA deep-link fallback are required; publishing is not part of this foundation.
+## Current implementation
 
-All data is synthetic, all financial writes/invites/export/deletion remain unavailable, and lesson completion resets on reload. The preserved Expo instructions below apply only to the older prototype.
-> **SmartBudget 2.0 direction (October 27, 2026):** The canonical product is now a web-first responsive SaaS/PWA. Use [the 2.0 specifications](docs/smartbudget-2.0/README.md), [web architecture decision](docs/ADR_WEB_FIRST.md), and [web foundation plan](docs/WEB_FOUNDATION_PLAN.md). Native-first instructions below describe the preserved Expo prototype and do not authorize rebuilding it. The web package lives in `web/`. The first 2.0 foundation task is implemented; see [verification](docs/WEB_FOUNDATION_VERIFICATION.md). Later engine/backend phases require a new request.
+The web foundation provides responsive navigation, profile/theme controls, synthetic personal and household workspaces, exact-money primitives, sample plan and transaction views, a 15-entry Academy catalog with a sample reader, and a public-shell service worker. All financial data is synthetic. Financial writes, authentication, secure household services, export and deletion are unavailable. Learning progress resets on reload. There is no implemented allocator, persistent backend or production security guarantee.
 
-# SmartBudget
+## Development
 
-A calmer way to decide what your next paycheck needs to cover.
+Use Node `>=22.12.0 <23` (CI uses Node 22) and npm. No environment variables or backend are needed for the sample app.
 
-SmartBudget is a planned personal and household budgeting app for iOS and Android. It combines paycheck planning, transparent allocation recommendations, selective household sharing, and practical money education.
+```sh
+cd web
+npm ci
+npm run dev
+```
 
-**Repository status: documentation starter; no application has been implemented.** No install, run, or test commands are claimed to work yet. This package intentionally contains no dependency versions, lockfile, backend project, credentials, or production configuration.
+Vite serves development at http://127.0.0.1:5173. To verify:
 
-## Product decisions
+```sh
+npm run typecheck
+npm run lint
+npm test
+npm run build
+npx playwright install chromium
+npm run test:browser
+```
 
-- Paycheck-first budgeting with a calendar-month reporting view.
-- Hybrid recommendations: deterministic needs-first rules plus configurable target percentages for remaining money. Users review and accept recommendations; the app never moves money.
-- Private personal workspace plus a separate household workspace containing only deliberately shared records.
-- Light-first interface, forest green primary color, warm neutral surfaces, supportive language.
-- Five tabs: Home, Plan, Activity, Goals, Learn. Settings and household management sit outside the tab bar.
-- SmartBudget Academy: 15 short MVP lessons, progress tracking, and optional practice.
+On Linux, use `npx playwright install --with-deps chromium` to install browser system dependencies too. Browser tests start their own production preview at port 4183, require a preceding build, and refuse to reuse another server. `npm run preview` serves the build at port 4173. Stop local servers when done. Service workers register only in production builds; installability needs separate browser verification. Future hosting requires HTTPS and SPA deep-link fallback.
 
-## Read in this order
+## Product and documentation authority
 
-1. [PRD](PRD.md): outcomes, scope, acceptance criteria.
-2. [Algorithm specification](ALGORITHM_SPEC.md): money semantics and invariants.
-3. [Design system](UI_UX_DESIGN_SYSTEM.md): screens, components, accessibility.
-4. [Academy](ACADEMY_SPEC.md): curriculum and content structure.
-5. [Architecture](ARCHITECTURE.md) and [database schema](DATABASE_SCHEMA.md).
-6. [Roadmap](ROADMAP.md), then [first Codex prompt](CODEX_PROMPT_01.md).
-7. [Agent rules](AGENTS.md) and [contributing](CONTRIBUTING.md).
+- [Canonical PRD](docs/smartbudget-2.0/02-PRD.md): approved requirements, detailed correctness contracts and outstanding decisions.
+- [Canonical roadmap](ROADMAP.md): Phases 0–6, dependencies and exit criteria.
+- [Project status](docs/PROJECT_STATUS.md): implemented versus planned, local-work preservation and decisions.
+- [Technical architecture](docs/smartbudget-2.0/03-TECHNICAL-ARCHITECTURE.md), [financial rules](ALGORITHM_SPEC.md), [logical schema](DATABASE_SCHEMA.md), [design specification](docs/smartbudget-2.0/04-UI-UX-SPECIFICATION.md), and [Academy specification](ACADEMY_SPEC.md): detailed contracts. These do not claim backend implementation.
+- [Web ADR](docs/ADR_WEB_FIRST.md), [verification](VERIFICATION.md), [contributing](CONTRIBUTING.md) and [agent instructions](AGENTS.md).
 
-## Start with Codex
+The initial beta is completely free: no payment or credit card, checkout, premium gates or upgrade prompts. Approved testers receive all completed beta MVP functionality, including 15 free reviewed lessons. Pricing, tiers and entitlements are a separate post-validation design task.
 
-Open this repository and paste CODEX_PROMPT_01.md. Codex must inspect the repository and write a plan before implementing only Phase 1. A human can review the plan in the same run; routine foundation work does not require a separate approval gate. Stop after foundation validation and report the result. Later roadmap phases need a new request.
+## Proprietary code and historical work
 
-## Local configuration
+SmartBudget is a proprietary commercial product. No open-source license is approved; do not add one or assume redistribution rights. Repository visibility must be reviewed by the owner. A missing LICENSE does not make a public repository private; avoid publishing proprietary material without authorization. Never commit credentials or real financial data.
 
-After the foundation exists, copy `.env.example` to `.env.local` only when a real integration is needed. Public Expo variables are readable by app users. Keep privileged credentials out of all client files, fixtures, commits, screenshots, and logs. Mock mode must run without environment variables or a backend.
-
-## Provenance and assumptions
-
-Prepared 2026-10-21 from the linked “Build budgeting app” conversation and the package request. Available conversation text confirms hybrid allocation, paycheck budgeting, household support, light design, and education. Prior assistant bodies were reference markers, so their detailed proposals could not be recovered. This package makes the supplied decisions concrete; it does not claim to reproduce those unavailable responses verbatim.
-
-New specification defaults: USD-only MVP; one active household per user; owner/editor/viewer roles; manual entry; no bank sync; 15 lessons; Expo + TypeScript; proposed Supabase/Postgres backend after foundation. These are coherent starter decisions, not recovered historical agreements. Future changes must update every affected contract.
-
-## Artifact verification
-
-`VERIFICATION.md` records archive/content checks. `SHA256SUMS.txt` hashes package payloads. The ZIP contains one SmartBudget-starter folder, including hidden configuration templates. Verify hashes after downloading if desired. A software license has deliberately not been chosen; select one before distributing application code.
+Root Expo/React Native assets and older native-first specifications are preserved historical work, outside the canonical web build. Superseded prompts do not authorize rebuilding or migrating the app. Audit and foundation reports retain their original evidence and dates; consult current status for subsequent changes.
