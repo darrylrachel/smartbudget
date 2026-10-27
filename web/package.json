@@ -10,7 +10,7 @@
     "dev": "vite --host 127.0.0.1",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
-    "test": "tsx --test tests/domain.test.ts",
+    "test": "tsx --test tests/*.test.ts",
     "test:browser": "playwright test",
     "build": "tsc --noEmit && node scripts/icons.mjs && vite build && node scripts/service-worker.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 4173"

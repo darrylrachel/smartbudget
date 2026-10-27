@@ -40,7 +40,7 @@ Browser tests start their own strict-port preview on 4183. They include desktop/
 
 Money helpers, date/allocation contracts, sample workspace records and Academy metadata were copied/adapted from ../src of the existing local Expo prototype. The web presentation is semantic HTML/CSS. Workspace identifiers are reusable validated IDs; only the mock adapter restricts demo aliases. Async workspace reads support cancellation. Fixture selection and role labels are not authorization.
 
-All amounts are checked integer cents. Expected pay is forecast only. Plan output is hand-authored sample data; no allocator or financial write ledger is implemented. Save/accept/invite/export/deletion actions remain unavailable. All 15 catalog topics are present: 14 unpublished and one sample reader. Progress is in memory and resets on reload. No authentication, backend SDK, real finance data, bank connection, billing or telemetry is included.
+All amounts are checked integer cents. Expected pay is forecast only. Displayed plan output remains hand-authored sample data. The pure allocator and paycheck recurrence adapter are implemented independently of the UI; see ../docs/PHASE_1_VERIFICATION.md. No financial write ledger is implemented. Save/accept/invite/export/deletion actions remain unavailable. All 15 catalog topics are present: 14 unpublished and one sample reader. Progress is in memory and resets on reload. No authentication, backend SDK, real finance data, bank connection, billing or telemetry is included.
 
 ## PWA contract
 
