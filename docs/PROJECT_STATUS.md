@@ -19,3 +19,7 @@ Backend, email/password auth with verification/reset and persistent secure sessi
 Backend execution/runtime and secure session architecture; production providers/region (Vercel + Supabase proposed); identity/email delivery; retention/deletion/backup durations; monitoring/recovery/support ownership; content reviewers; browser/performance release profiles; owner review of repository visibility and proprietary-code access. Geography/USD, household limit/roles, free beta and proprietary licensing are approved, not open choices.
 
 Historical audit, foundation plan/verification and migration documents retain dated evidence. Their stage numbering and provider/runtime/session proposals do not override the current roadmap or approved PRD. Remote CI success and release readiness require separate evidence.
+
+## Phase 2 PR 1 foundation (2026-10-29)
+
+Fastify/TypeScript local backend, GET /health, strict configuration, safe errors and local Supabase config are implemented. Authentication, household operations and persistence remain deferred. The allocation engine stays in web/src/domain and executes directly in backend tests. Sparse semimonthly input validation is corrected. See [ADR](ADR_PHASE_2_BACKEND.md), [local development](LOCAL_BACKEND.md) and [verification](PHASE_2_PR_1_VERIFICATION.md) for current evidence. Docker daemon was unavailable; no local database readiness is claimed. The earlier uncommitted scaffold was backed up before revision.

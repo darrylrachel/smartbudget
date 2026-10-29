@@ -44,3 +44,7 @@ The initial beta is completely free: no payment or credit card, checkout, premiu
 SmartBudget is a proprietary commercial product. No open-source license is approved; do not add one or assume redistribution rights. Repository visibility must be reviewed by the owner. A missing LICENSE does not make a public repository private; avoid publishing proprietary material without authorization. Never commit credentials or real financial data.
 
 Root Expo/React Native assets and older native-first specifications are preserved historical work, outside the canonical web build. Superseded prompts do not authorize rebuilding or migrating the app. Audit and foundation reports retain their original evidence and dates; consult current status for subsequent changes.
+
+## Local backend scaffold
+
+Phase 2 PR 1 adds a minimal Fastify/TypeScript backend with `GET /health` and local Supabase configuration. No authentication or persistence is implemented. See [local development commands](docs/LOCAL_BACKEND.md), [architecture ADR](docs/ADR_PHASE_2_BACKEND.md), and [verification](docs/PHASE_2_PR_1_VERIFICATION.md).

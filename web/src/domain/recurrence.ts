@@ -13,7 +13,8 @@ export function paycheckDates(schedule: PaySchedule, range: ReturnType<typeof pe
   const day = (n: number) => { if (!Number.isInteger(n) || n < 1 || n > 31) throw new Error('Scheduled day must be 1–31.'); };
   if (schedule.cadence === 'monthly') day(schedule.day);
   else if (schedule.cadence === 'semimonthly') {
-    schedule.days.forEach(day);
+    if (!Array.isArray(schedule.days) || schedule.days.length !== 2 || !Object.hasOwn(schedule.days, 0) || !Object.hasOwn(schedule.days, 1)) throw new Error('Choose two distinct ascending days.');
+    day(schedule.days[0]); day(schedule.days[1]);
     if (schedule.days.length !== 2 || schedule.days[0] >= schedule.days[1]) throw new Error('Choose two distinct ascending days.');
   } else if (schedule.cadence !== 'weekly' && schedule.cadence !== 'biweekly') throw new Error('Invalid cadence.');
   const result: string[] = [];

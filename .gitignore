@@ -34,3 +34,5 @@ supabase/.temp/
 # Native generated directories (revisit if adopting maintained native projects)
 /ios/
 /android/
+
+supabase/.branches/
